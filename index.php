@@ -4,11 +4,11 @@
 <?php 
 
 $topics = $conn->query("SELECT Topics.id AS id, Topics.title AS title, Topics.category AS category, 
-    Topics.user_name AS user_name, Topics.user_image AS user_image, Topics.created_at AS created_at, 
-    COUNT(replies.topic_id) AS count_replies 
-    FROM Topics 
-    LEFT JOIN replies ON Topics.id = replies.topic_id 
-    GROUP BY Topics.id");
+Topics.user_name AS user_name, Topics.user_image AS user_image, Topics.created_at AS created_at, 
+COUNT(replies.topic_id) AS count_replies 
+FROM Topics 
+LEFT JOIN replies ON Topics.id = replies.topic_id 
+GROUP BY(replies.topic_id )");
 
 
 	$topics->execute();
@@ -36,7 +36,7 @@ $topics = $conn->query("SELECT Topics.id AS id, Topics.title AS title, Topics.ca
 										<div class="topic-content pull-right">
 											<h3><a href="topics/topic.php?id=<?php echo $topics->id; ?>"><?php echo $topics->title;?></a></h3>
 											<div class="topic-info">
-												<a href="category.html"><?php echo $topics->category;?></a> >> <a href="profile.html"><?php echo $topics->user_name;?></a> >> Posted on: <?php echo $topics->created_at;?>
+												<a href="<?php echo APPURL; ?>/categories/show.php?name=<?php echo $topics->category; ?>"><?php echo $topics->category;?></a> >> <a href="profile.html"><?php echo $topics->user_name;?></a> >> Posted on: <?php echo $topics->created_at;?>
 												<span class="color badge pull-right"><?php echo $topics->count_replies;?></span>
 											</div>
 										</div>

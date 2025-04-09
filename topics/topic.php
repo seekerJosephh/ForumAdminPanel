@@ -25,6 +25,8 @@
 
 		$allReplies = $reply->fetchAll(PDO::FETCH_OBJ);
 
+	} else {
+		header("location: ".APPURL."/404.php");
 	}
 
 	if (isset($_POST['submit'])) {
