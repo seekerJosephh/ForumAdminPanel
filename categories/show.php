@@ -40,7 +40,7 @@
 										<div class="topic-content pull-right">
 											<h3><a href="../topics/topic.php?id=<?php echo $topics->id; ?>"><?php echo $topics->title;?></a></h3>
 											<div class="topic-info">
-												<a href="<?php echo APPURL; ?>/categories/show.php?name=<?php echo $topics->category; ?>"><?php echo $topics->category;?></a> >> <a href="profile.html"><?php echo $topics->user_name;?></a> >> Posted on: <?php echo $topics->created_at;?>
+												<a href="<?php echo APPURL; ?>/categories/show.php?name=<?php echo $topics->category; ?>"><?php echo $topics->category;?></a> >> <a href="<?php echo APPURL;?> /user/profile.php?name=<?php echo $topics->user_name; ?>"><?php echo $topics->user_name;?></a> >> Posted on: <?php echo $topics->created_at;?>
 												
 											</div>
 										</div>

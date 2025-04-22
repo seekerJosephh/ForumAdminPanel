@@ -41,8 +41,9 @@
             <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['username'] ?> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
+            <li><a href="<?php echo APPURL;?>/user/profile.php?name=<?php echo $_SESSION['username']; ?>">Public Profile</a></li>
+            <li><a href="<?php echo APPURL;?>/user/edit-user.php?id=<?php echo $_SESSION['user_id']; ?>">Edit Profile</a></li>
+            <!-- <li><a href="#">Another action</a></li> -->
             <li><a href="<?php echo APPURL;?>/auth/logout.php">Logout</a></li>
            
           </ul>

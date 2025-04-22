@@ -82,7 +82,7 @@
 									<ul>
 										<li><strong><?php echo $singleTopic->user_name;?></strong></li>
 										<li><?php echo $count->count_topics; ?> Posts</li>
-										<li><a href="profile.php">Profile</a>
+										<li><a href="<?php echo APPURL ?>/user/profile.php?name=<?php echo $singleTopic->user_name;?>">Profile</a>
 									</ul>
 								</div>
 							</div>
@@ -110,7 +110,7 @@
 									<img class="avatar pull-left" src="../img/<?php echo $reply->user_image; ?>"/>
 									<ul>
 										<li><strong><?php echo $reply->user_name; ?></strong></li>
-										<li><a href="profile.php">Profile</a>
+										<li><a href="<?php echo APPURL ?>/user/profile.php?name=<?php echo $singleTopic->user_name;?>">Profile</a>
 									</ul>
 								</div>
 							</div>
