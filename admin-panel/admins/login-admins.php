@@ -2,6 +2,10 @@
 <?php require "../../config/config.php"; ?>
 <?php 
 
+if(isset($_SESSION['adminname'])){
+  header("location: ".ADMINURL."");
+}
+
 if (isset($_POST['submit'])) {
   if (empty($_POST['email']) || empty($_POST['password'])) {
       echo "<script>alert('One or more inputs are empty');</script>";
@@ -12,7 +16,7 @@ if (isset($_POST['submit'])) {
 
       // Prepare and execute the query with a prepared statement
       try {
-          $login = $conn->prepare("SELECT * FROM users WHERE email = :email");
+          $login = $conn->prepare("SELECT * FROM admins WHERE email = :email");
           $login->execute([':email' => $email]);
 
           $fetch = $login->fetch(PDO::FETCH_ASSOC);
@@ -20,15 +24,11 @@ if (isset($_POST['submit'])) {
           if ($login->rowCount() > 0) {
               if (password_verify($password, $fetch['password'])) {
 
-                  // $_SESSION['username'] = $fetch['username'];
-                  // $_SESSION['name'] = $fetch['name'];
-                  // $_SESSION['user_id'] = $fetch['id'];
-                  // $_SESSION['email'] = $fetch['email'];
-                  // $_SESSION['user_image'] = $fetch['image'];
+                $_SESSION['adminname'] = $fetch['adminname'];
+                $_SESSION['email'] = $fetch['email'];
 
-                  // header("location: ".APPURL."");
-                echo "<script>alert('LOGGED IN');</script>";
-
+                header("location: ".ADMINURL."");
+ 
 
               } else {
                   echo "<script>alert('Email or password is wrong');</script>";
