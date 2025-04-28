@@ -8,6 +8,7 @@
 
   // grapping the data
   if(isset($_GET['name'])) {
+
     $name = $_GET['name'];
     $select = $conn->query("SELECT * FROM users WHERE username='$name'");
     $select->execute();
