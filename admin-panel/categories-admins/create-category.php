@@ -5,24 +5,25 @@
 if(!isset($_SESSION['adminname'])) {
   header("location: ".ADMINURL."/admins/login-admins.php");
 }
-	if (isset($_POST['submit'])) {
-    if (empty($_POST['name'])) {
-        echo "<script>alert('One or more inputs are empty');</script>";
-    } else {
-        $name = htmlspecialchars($_POST['name']);
-       
-        // Prepare and execute the query with error handling
-        try {
-            $insert = $conn->prepare("INSERT INTO categories (name) VALUES (:name)");
-            $insert->execute([
-                ":name" => $name,
-            ]);
-            header("Location: show-categories.php");
-            exit();
-        } catch (PDOException $e) {
-            echo "<script>alert('Database error: " . $e->getMessage() . "');</script>";
-        }
-    }
+
+if (isset($_POST['submit'])) {
+  if (empty($_POST['name'])) {
+      echo "<script>alert('One or more inputs are empty');</script>";
+  } else {
+      $name = htmlspecialchars($_POST['name']);
+      
+      // Prepare and execute the query with error handling
+      try {
+          $insert = $conn->prepare("INSERT INTO categories (name) VALUES (:name)");
+          $insert->execute([
+              ":name" => $name,
+          ]);
+          header("Location: show-categories.php");
+          exit();
+      } catch (PDOException $e) {
+          echo "<script>alert('Database error: " . $e->getMessage() . "');</script>";
+      }
+  }
 }
 ?>
   <div class="row">
